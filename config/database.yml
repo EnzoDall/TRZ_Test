@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: monsuno20
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: zombie_survivors_api_development
+
+test:
+  <<: *default
+  database: zombie_survivors_api_test
+
+production:
+  <<: *default
+  database: zombie_survivors_api_production
+  username: zombie_survivors_api
+  password: <%= ENV['ZOMBIE_SURVIVORS_API_DATABASE_PASSWORD'] %>
